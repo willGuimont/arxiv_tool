@@ -19,6 +19,7 @@ pip install -r requirements.txt
 
 ## Future features
 - [ ] Directly clone the sources from GitHub
+- [ ] Support more cases (nested folders, etc.)
 
 ## References
 - [How to publish your preprints on Arxiv • Northern Robotics Laboratory](https://norlab.ulaval.ca/research/publish-prepints-arxiv/)
