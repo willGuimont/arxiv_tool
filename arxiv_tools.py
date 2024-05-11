@@ -47,7 +47,7 @@ def move_figures(dir_path: pathlib.Path, tex_source: str) -> str:
         fig_out_path = dir_path / fig_path.name.replace('_', '')
         shutil.move(fig_path, fig_out_path)
 
-        start, end = include.span()
+        start, end = include.span(1)
         tex_source = replace_between_indices(tex_source, start, end, fig.name.replace('_', ''))
 
     return tex_source
