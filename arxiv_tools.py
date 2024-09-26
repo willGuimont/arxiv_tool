@@ -38,7 +38,17 @@ def fuse_texs(dir_path: pathlib.Path, tex_source: str) -> str:
     return tex_source
 
 
+def remove_commented_lines(tex_source: str) -> str:
+    return "\n".join(
+        filter(
+            lambda l: not l.startswith("%"),
+            tex_source.split("\n"),
+        ),
+    )
+
+
 def move_figures(dir_path: pathlib.Path, tex_source: str) -> str:
+    tex_source = remove_commented_lines(tex_source)
     fig_regex = re.compile(r'\\includegraphics\[.*\]\{(.*)\}')
 
     for include in reversed(list(fig_regex.finditer(tex_source))):
