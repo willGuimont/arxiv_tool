@@ -1,4 +1,4 @@
-# arxiv_tools
+# arxiv_tool
 
 Some tools for working with arXiv papers.
 
