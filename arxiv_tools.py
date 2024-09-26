@@ -3,6 +3,7 @@ import os
 import pathlib
 import re
 import shutil
+from typing import Sequence
 
 
 def remove_useless_files(dir_path: pathlib.Path):
@@ -47,12 +48,18 @@ def remove_commented_lines(tex_source: str) -> str:
     )
 
 
-def move_figures(dir_path: pathlib.Path, tex_source: str) -> str:
+def move_figures(
+    dir_path: pathlib.Path,
+    tex_source: str,
+    ignored_fignames: Sequence[str],
+) -> str:
     tex_source = remove_commented_lines(tex_source)
     fig_regex = re.compile(r'\\includegraphics\[.*\]\{(.*)\}')
 
     for include in reversed(list(fig_regex.finditer(tex_source))):
         fig = pathlib.Path(include.group(1))
+        if fig.name.lower() in ignored_fignames:
+            continue
         fig_path = dir_path / fig
         fig_out_path = dir_path / fig_path.name.replace('_', '')
         shutil.move(fig_path, fig_out_path)
@@ -78,12 +85,14 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Publish arXiv papers')
     parser.add_argument('src_dir', type=str, help='source directory')
     parser.add_argument('dst_dir', type=str, help='destination directory')
+    parser.add_argument("--ignore-img", type=str, nargs="+", help="ignored image names")
     parser.add_argument('-f', '--force', action='store_true', help='delete dst_dir if it exists')
     args = parser.parse_args()
 
     src_dir = pathlib.Path(args.src_dir)
     dst_dir = pathlib.Path(args.dst_dir)
     force_flag = args.force
+    ignored_imgnames = args.ignore_img
 
     if not force_flag and dst_dir.exists() and len(list(dst_dir.iterdir())) > 0:
         raise FileExistsError(f'{dst_dir} already exists, use -f to force delete')
@@ -100,7 +109,7 @@ if __name__ == '__main__':
         tex_source = file.read()
 
     tex_source = fuse_texs(dst_dir, tex_source)
-    tex_source = move_figures(dst_dir, tex_source)
+    tex_source = move_figures(dst_dir, tex_source, ignored_imgnames)
     tex_source = add_arxiv_message(tex_source)
 
     with open(root, 'w') as file:
