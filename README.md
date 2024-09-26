@@ -14,7 +14,7 @@ pip install -r requirements.txt
 
 ## Usage
 1. Copy the sources of the paper in the `data/` directory.
-2. Run `python arxiv_tools.py data/paper data/output_paper` to generate the submission files in the `data/output_paper` directory.
+2. Run `python arxiv_tool.py data/paper data/output_paper` to generate the submission files in the `data/output_paper` directory.
 3. Upload the files to arXiv.
 
 ## Future features
