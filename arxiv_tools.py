@@ -25,7 +25,7 @@ def fuse_texs(dir_path: pathlib.Path, tex_source: str) -> str:
     input_regex = re.compile(r'\\input{(.*)}')
 
     for include in reversed(list(input_regex.finditer(tex_source))):
-        include_path = dir_path / pathlib.Path(include.group(1) + '.tex')
+        include_path = dir_path / pathlib.Path(include.group(1)).with_suffix(".tex")
 
         with open(include_path, 'r') as file:
             content = file.read() + '\n\n'
