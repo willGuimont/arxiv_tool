@@ -49,9 +49,9 @@ def remove_commented_lines(tex_source: str) -> str:
 
 
 def move_figures(
-    dir_path: pathlib.Path,
-    tex_source: str,
-    ignored_fignames: Sequence[str],
+        dir_path: pathlib.Path,
+        tex_source: str,
+        ignored_fignames: Sequence[str],
 ) -> str:
     tex_source = remove_commented_lines(tex_source)
     fig_regex = re.compile(r'\\includegraphics\[.*\]\{(.*)\}')
@@ -118,4 +118,5 @@ if __name__ == '__main__':
     rm_dirs(dst_dir)
 
     out_archive = f'{dst_dir.name}.tar.gz'
-    os.system(f'cd {dst_dir} && pdflatex root.tex && biber root && pdflatex root.tex && arxiv-collector root.tex && mv arxiv.tar.gz {out_archive}')
+    os.system(
+        f'cd {dst_dir} && pdflatex root.tex && biber root && pdflatex root.tex && arxiv-collector root.tex && mv arxiv.tar.gz {out_archive}')

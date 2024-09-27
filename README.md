@@ -6,14 +6,14 @@ Some tools for working with arXiv papers.
 
 Install the requirements of `arxiv-collector`: [arxiv-collector · PyPI](https://pypi.org/project/arxiv-collector/#requirements)
 
-Install the requirements of `arxiv_tools`:
+Install the requirements of `arxiv_tool`:
 
 ```bash
 pip install -r requirements.txt
 ```
 
 ## Usage
-1. Copy the sources of the paper in the `data/` directory.
+1. Copy the sources of the paper in a directory, e.g., `data/`.
 2. Run `python arxiv_tool.py data/paper data/output_paper` to generate the submission files in the `data/output_paper` directory.
 3. Upload the files to arXiv.
 

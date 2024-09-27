@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "arxiv_tool"
+version = "0.0.1"
+authors = [
+    { name = "William Guimont-Martin", email = "william.guimont-martin@norlab.ulaval.ca" },
+    { name = "Damien LaRocque", email = "phicoltan@gmail.com" },
+]
+description = "Prepare your arXiv submissions"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.8"
+dependencies = ["arxiv-collector"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/willGuimont/arxiv_tool"
+Issues = "https://github.com/willGuimont/arxiv_tool/issues"
+
+[project.scripts]
+arxiv_tool = "arxiv_tool.__main__:main"
