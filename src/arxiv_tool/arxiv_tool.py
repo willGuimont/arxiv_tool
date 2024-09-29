@@ -85,7 +85,7 @@ def main():
     parser = argparse.ArgumentParser(description='Publish arXiv papers')
     parser.add_argument('src_dir', type=str, help='source directory')
     parser.add_argument('dst_dir', type=str, help='destination directory')
-    parser.add_argument("--ignore-img", type=str, nargs="+", help="ignored image names")
+    parser.add_argument("--ignore-img", type=str, nargs="+", help="ignored image names", default=[])
     parser.add_argument('-f', '--force', action='store_true', help='delete dst_dir if it exists')
     args = parser.parse_args()
 
