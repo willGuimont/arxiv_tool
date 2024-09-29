@@ -20,6 +20,13 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/arxiv-tool
+
+    permissions:
+      id-token: write
+
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
