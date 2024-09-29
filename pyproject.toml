@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "arxiv_tool"
-version = "0.0.4"
+version = "0.0.1"
 authors = [
     { name = "William Guimont-Martin", email = "william.guimont-martin@norlab.ulaval.ca" },
     { name = "Damien LaRocque", email = "phicoltan@gmail.com" },
