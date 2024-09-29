@@ -25,4 +25,4 @@ Homepage = "https://github.com/willGuimont/arxiv_tool"
 Issues = "https://github.com/willGuimont/arxiv_tool/issues"
 
 [project.scripts]
-arxiv_tool = "arxiv_tool.__main__:main"
+arxiv_tool = "arxiv_tool.arxiv_tool:main"
