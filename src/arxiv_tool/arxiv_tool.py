@@ -81,7 +81,7 @@ def rm_dirs(dir_path: pathlib.Path):
             shutil.rmtree(f)
 
 
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser(description='Publish arXiv papers')
     parser.add_argument('src_dir', type=str, help='source directory')
     parser.add_argument('dst_dir', type=str, help='destination directory')
@@ -120,3 +120,7 @@ if __name__ == '__main__':
     out_archive = f'{dst_dir.name}.tar.gz'
     os.system(
         f'cd {dst_dir} && pdflatex root.tex && biber root && pdflatex root.tex && arxiv-collector root.tex && mv arxiv.tar.gz {out_archive}')
+
+
+if __name__ == '__main__':
+    main()
