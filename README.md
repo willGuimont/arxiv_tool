@@ -16,7 +16,7 @@ pip install arxiv_tool
 ## Usage
 
 1. Copy the sources of the paper in a directory, e.g., `paper_src/`.
-2. Run `python arxiv_tool.py paper_src paper_out` to generate the submission files in the `paper_out`
+2. Run `python -m arxiv_tool paper_src paper_out` to generate the submission files in the `paper_out`
    directory.
 3. Upload the files to arXiv.
 
